@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "currencyPriceProto/";
+
+message RequestCurrencyPrice{
+
+}
+
+message CurrencyInfo{
+    string market = 1;
+    string price = 2;
+}
+
+message ResponseCurrencyPrice{
+    repeated CurrencyInfo currencyPriceList = 1;
+}
+
+service currencyPrice{
+    rpc getCurrencyPrice(RequestCurrencyPrice) returns (stream ResponseCurrencyPrice) {}
+}
